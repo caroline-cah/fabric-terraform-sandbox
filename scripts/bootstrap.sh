@@ -20,7 +20,7 @@ echo "👤 Creating service principal"
 SP_OBJECT_ID=$(az ad sp create --id "$APP_ID" --query id -o tsv)
 echo "SP Object ID: $SP_OBJECT_ID"
 
-echo "🔗 Creating federated credential (main branch)..."
+echo "🔗 Creating federated credential (main branch)"
 az ad app federated-credential create \
   --id "$APP_ID" \
   --parameters "{
@@ -31,7 +31,7 @@ az ad app federated-credential create \
     \"description\": \"GitHub Actions OIDC for main branch\"
   }"
 
-echo "🔑 Assigning Contributor role on subscription..."
+echo "🔑 Assigning Contributor role on subscription"
 az role assignment create \
   --role "Contributor" \
   --subscription "$SUBSCRIPTION_ID" \
@@ -39,9 +39,3 @@ az role assignment create \
   --assignee-principal-type ServicePrincipal
 
 TENANT_ID=$(az account show --query tenantId -o tsv)
-
-echo ""
-echo "✅ Done! Add these as GitHub Secrets:"
-echo "AZURE_CLIENT_ID     = $APP_ID"
-echo "AZURE_TENANT_ID     = $TENANT_ID"
-echo "AZURE_SUBSCRIPTION_ID = $SUBSCRIPTION_ID"
