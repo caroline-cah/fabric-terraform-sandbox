@@ -22,3 +22,9 @@ resource "fabric_workspace_role_assignment" "admin" {
     type = "User"
   }
 }
+
+resource "fabric_lakehouse" "main" {
+  workspace_id = fabric_workspace.sandbox.id
+  display_name = "fabric-iac-${var.environment}-lakehouse"
+  description  = "Managed by Terraform"
+}

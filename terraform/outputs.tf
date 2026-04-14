@@ -10,3 +10,7 @@ output "fabric_workspace_id" {
 output "fabric_workspace_name" {
   value = fabric_workspace.sandbox.display_name
 }
+
+output "lakehouse_id" {
+  value = fabric_lakehouse.main.id
+}
