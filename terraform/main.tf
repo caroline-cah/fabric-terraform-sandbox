@@ -16,7 +16,10 @@ resource "fabric_workspace" "sandbox" {
 
 resource "fabric_workspace_role_assignment" "admin" {
   workspace_id = fabric_workspace.sandbox.id
-  principal_id = "11275b3f-c568-4c60-b04d-fe7228049c15"
-  principal_type = "User"
-  role = "Admin"
+  role         = "Admin"
+
+  principal {
+    id   = "11275b3f-c568-4c60-b04d-fe7228049c15"
+    type = "User"
+  }
 }
