@@ -1,8 +1,14 @@
 terraform {
+  required_version = ">= 1.8, < 2.0"
+
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
       version = "~> 4.0"
+    }
+    fabric = {
+      source  = "microsoft/fabric"
+      version = "~> 1.0"
     }
   }
 
@@ -19,4 +25,8 @@ provider "azurerm" {
   features {}
   use_oidc        = true
   subscription_id = "cbcd849f-a3ef-4ceb-8f27-f10cde330a3a"
+}
+
+provider "fabric" {
+  use_oidc = true
 }

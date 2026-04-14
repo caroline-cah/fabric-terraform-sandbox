@@ -8,3 +8,8 @@ resource "azurerm_resource_group" "fabric_rg" {
     managed_by  = "terraform"
   }
 }
+
+resource "fabric_workspace" "sandbox" {
+  display_name = "fabric-iac-${var.environment}"
+  description  = "IaC sandbox workspace (${var.environment}) — managed by Terraform"
+}
